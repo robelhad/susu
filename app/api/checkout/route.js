@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { getDataSource } from "@/lib/db";
+
 import { prisma } from "@/lib/prisma";
 import Stripe from "stripe";
 
