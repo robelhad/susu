@@ -1,0 +1,30 @@
+async function getProducts() {
+ const res = await fetch(
+   `${process.env.NEXT_PUBLIC_SITE_URL}/api/products`,
+   { cache: "no-store" }
+ );
+ return res.json();
+}
+
+
+export default async function ProductsPage() {
+ const products = await getProducts();
+console.log("DATA:", products);
+console.log("IS ARRAY:", Array.isArray(products));
+console.log(typeof products);
+
+ return (
+   <div className="container">
+     <h1>Products</h1>
+     <div className="grid">
+       {products.map((p) => (
+         <div key={p.id} className="card">
+           <img src={p.image} width="200" />
+           <h3>{p.name}</h3>
+           <p>${p.price.toFixed(2)}</p>
+         </div>
+       ))}
+     </div>
+   </div>
+ );
+}
