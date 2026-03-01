@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import { prisma } from "@/lib/prisma";
 //import ProductCard from "./ProductCard";
 import Link from "next/link";
@@ -34,16 +36,14 @@ export default async function ProductsPage() {
     console.log("Serving from database");
     //res.json(products);
     }
+    const safeProducts = JSON.parse(JSON.stringify(products));
     return (
-    <ProductsClient products={products} />
+    <ProductsClient products={safeProducts?? []} />
       //renderPage("Products - Susu's Macaroon Market", html)
   );
         } catch (error) {
       console.error("Error fetching products:", error);
-      return NextResponse.json(
-      { error: "Error fetching products" },
-      { status: 500 }
-    );
+      return <div>Error loading products</div>;
     }
 
   
