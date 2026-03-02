@@ -1,3 +1,4 @@
+/*
 import { prisma } from "@/lib/prisma";
 import Stripe from "stripe";
 import { headers } from "next/headers";
@@ -32,3 +33,5 @@ export async function POST(req) {
 
  return new Response(null, { status: 200 });
 }
+
+*/
